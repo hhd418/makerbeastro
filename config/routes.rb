@@ -1,4 +1,10 @@
 Makerbeastro::Application.routes.draw do
+ 
+  resources :meals do
+    resources :ingredients 
+  end
+
+  resources :ingredients
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
