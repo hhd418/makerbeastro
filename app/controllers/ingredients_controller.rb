@@ -35,14 +35,14 @@ class IngredientsController < ApplicationController
     redirect_to @meal
   end
 
-  def delete
+  def delete_ingredient
     @ingredient.destroy
     redirect_to ingredients_path
   end
 
   def destroy
-    @byebye = @meal.meal_ingredients.find_by_ingredient_id(@ingredient)
-    @byebye.destroy
+    @relationship = @meal.meal_ingredients.find_by_ingredient_id(@ingredient)
+    @relationship.destroy
     redirect_to @meal
   end
 

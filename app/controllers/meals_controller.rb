@@ -19,9 +19,6 @@ class MealsController < ApplicationController
     redirect_to @meal
   end
 
-  def add_ingredient
-    redirect_to @meal
-  end
  
 
   def edit
