@@ -1,5 +1,6 @@
 <h2>These are all <%= @meal.name %> ingredients</h2>
 
-<% @ingredients.each do |ingredient| %>
+<% @meal.ingredients.each do |ingredient| %>
+	</br>
 	<%= ingredient.name %>
 <% end %>

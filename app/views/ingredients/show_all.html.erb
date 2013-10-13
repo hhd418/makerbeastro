@@ -2,4 +2,14 @@
 
 <% @ingredients.each do |ingredient| %>
 	<%= ingredient.name %>
+	<%= link_to 'Show', ingredient %>
+	<%#= link_to 'Edit', edit_ingredient_path(ingredient) %>
+	<%= link_to 'Destroy', ingredient, method: :delete %>
+	</br>
 <% end %>
+
+</br>
+
+<%= link_to 'New Item', ingredients_new_path %>
+
+<%= link_to 'Add Ingredient', ingredients_new_path %>
