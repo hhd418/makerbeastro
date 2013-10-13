@@ -1,0 +1,16 @@
+<h1>Maker Beastro</h1>
+
+<% @meals.each do |meal| %>
+	<%= meal.name %>
+	<%= number_to_currency(meal.price) %>
+	<%= link_to 'Show', meal %>
+	<%= link_to 'Edit', edit_meal_path(meal) %>
+	<%= link_to 'Destroy', meal, method: :delete %>
+	</br>
+<% end %>
+
+</br>
+
+<%= link_to 'New Item', new_meal_path %>
+
+<%= link_to 'Add Ingredient', ingredients_new_path %>
