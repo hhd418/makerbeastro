@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :delete, :show_ingredient, :update, :destroy]
+  before_action :set_ingredient, only: [:show, :edit, :update, :delete, :show_ingredient, :update, :destroy, :delete_ingredient]
   before_action :set_meal, only: [:index, :new, :show, :edit, :create, :update, :delete, :destroy]
 
   def index
