@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy, :show_ingredient]
-  before_action :set_meal, only: [:index, :new, :show, :edit]
+  before_action :set_ingredient, only: [:show, :edit, :update, :delete, :show_ingredient, :update, :destroy]
+  before_action :set_meal, only: [:index, :new, :show, :edit, :create, :update, :delete, :destroy]
 
   def index
     @ingredients = @meal.ingredients
@@ -26,17 +26,30 @@ class IngredientsController < ApplicationController
   end
 
   def create_ingredient
-    @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.save
+    @ingredient = Ingredient.find_or_create_by(ingredient_params)
     redirect_to @ingredient
   end
 
   def create
-    @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.save
-    redirect_to @ingredient
+    @ingredient = @meal.ingredients.find_or_create_by(ingredient_params)
+    redirect_to @meal
   end
 
+  def delete
+    @ingredient.destroy
+    redirect_to ingredients_path
+  end
+
+  def destroy
+    @byebye = @meal.meal_ingredients.find_by_ingredient_id(@ingredient)
+    @byebye.destroy
+    redirect_to @meal
+  end
+
+  def update
+    @join = @meal.meal_ingredients.create(ingredient: @ingredient)
+    redirect_to @meal
+  end
 
 
   def edit

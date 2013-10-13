@@ -1,5 +1,36 @@
-<%= @meal.name %>
-<%= @meal.price %>
+<style type="text/css">
+	.button_to {
+		float: left;
+
+	}
+	.name {
+		float: left;
+	}
+</style>
+<h1>
+	<%= @meal.name %>
+	<%= number_to_currency(@meal.price) %>
+</h1>
+<h2>Current Ingredients</h2>
+<% @meal.ingredients.each do |ingredient| %>
+	<div class="name"><%= ingredient.name %></div>
+	<%= button_to 'Remove', meal_ingredient_path(@meal, ingredient.id), method: :delete %>
+	</br>
+	</br>
+<% end %>
+
+</br>
+
+
+<%= link_to "Create and Add New Ingredient to #{@meal.name}", new_meal_ingredient_path(@meal) %>
+<h2>Available Ingredients</h2>
+
+<% @ingredients.each do |ingredient| %>
+	<% unless @meal.ingredients.any? { |ing| ing.name == ingredient.name } %>
+		<div class="name"><%= ingredient.name %></div>
+		<%= button_to "Add to #{@meal.name}", meal_ingredient_path(@meal, ingredient.id), :method => :put %>
+	<br></br>
+	<% end %>
+<% end %>
 
 <%= link_to 'Back', meals_path %>
-<%= link_to 'New Ingredient', new_meal_ingredient_path(@meal) %>

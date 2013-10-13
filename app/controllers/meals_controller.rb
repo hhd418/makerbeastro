@@ -6,6 +6,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @ingredients = Ingredient.all
   end
 
   def new
@@ -18,6 +19,9 @@ class MealsController < ApplicationController
     redirect_to @meal
   end
 
+  def add_ingredient
+    redirect_to @meal
+  end
  
 
   def edit

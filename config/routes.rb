@@ -4,6 +4,10 @@ Makerbeastro::Application.routes.draw do
     resources :ingredients 
   end
 
+  # get '/menu', to: 'menu#index'
+
+  get '/meals/:meal_id/add_ingredient' => 'meals#add_ingredient'
+
   root 'meals#index'
 
   # match '/ingredients', to: 'ingredients#show_all', via: [:get]
@@ -11,12 +15,12 @@ Makerbeastro::Application.routes.draw do
   # match '/ingredients/new', to: 'ingredients#new_ingredient', via: [:get]
   # match '/ingredients/:id', to: 'ingredients#ingredient', via: [:get, :patch, :put, :delete], as: 'ingredient'
 
-  get '/ingredients', to: 'ingredients#show_all'
-  post '/ingredients', to: 'ingredients#create_ingredient'
+  get 'ingredients', to: 'ingredients#show_all'
+  post 'ingredients', to: 'ingredients#create_ingredient'
   
-  get '/ingredients/new', to: 'ingredients#new_ingredient'
-  get '/ingredients/:id', to: 'ingredients#show_ingredient', as: 'ingredient'
-  
+  get 'ingredients/new', to: 'ingredients#new_ingredient'
+  get 'ingredients/:id', to: 'ingredients#show_ingredient', as: 'ingredient'
+  delete 'ingredients/:id', to: 'ingredients#delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
