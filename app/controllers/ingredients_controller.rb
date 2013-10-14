@@ -26,12 +26,14 @@ class IngredientsController < ApplicationController
   end
 
   def create_ingredient
-    @ingredient = Ingredient.find_or_create_by(ingredient_params)
+    @name = ingredient_params[:name]
+    @ingredient = Ingredient.find_or_create_by(name: @name.titleize)
     redirect_to @ingredient
   end
 
   def create
-    @ingredient = @meal.ingredients.find_or_create_by(ingredient_params)
+    @name = ingredient_params[:name]
+    @ingredient = @meal.ingredients.find_or_create_by(name: @name.titleize)
     redirect_to @meal
   end
 
