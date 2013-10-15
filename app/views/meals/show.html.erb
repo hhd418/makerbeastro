@@ -1,22 +1,13 @@
-<style type="text/css">
-	.button_to {
-		float: left;
 
-	}
-	.name {
-		float: left;
-	}
-</style>
 <h1>
 	<%= @meal.name %>
 	<%= number_to_currency(@meal.price) %>
 </h1>
 <h2>Current Ingredients</h2>
 <% @meal.ingredients.each do |ingredient| %>
-	<div class="name"><%= ingredient.name %></div>
-	<%= button_to "Don't need", meal_ingredient_path(@meal, ingredient.id), method: :delete %>
-	</br>
-	</br>
+		<%= ingredient.name %>
+		<%= button_to "Don't need", meal_ingredient_path(@meal, ingredient.id), method: :delete, class: 'button small' %>
+
 <% end %>
 
 </br>
